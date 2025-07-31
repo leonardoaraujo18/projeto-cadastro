@@ -16,12 +16,6 @@ function Home() {
     age: 27,
     email: 'leo@email.com',
   },
-  {
-    id: '2946sdsdsds',
-    name: 'Jasmin',
-    age: 16,
-    email: 'jas@email.com',
-  },
 ]
 
   return (
@@ -36,11 +30,11 @@ function Home() {
 
       {users.map(user => (
 
-      <div key={user.id}>
+      <div key={user.id} className='card'>
         <div>
-          <p>Nome: {user.name}</p>
-          <p>Idade: {user.age}</p>
-          <p>Email: {user.email}</p>
+          <p>Nome: <span>{user.name}</span></p>
+          <p>Idade: <span>{user.age}</span></p>
+          <p>Email: <span>{user.email}</span></p>
         </div>
         <button>🗑️</button>
       </div>
