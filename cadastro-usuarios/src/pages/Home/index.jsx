@@ -1,22 +1,34 @@
 
 import './style.css'
 
-function Home() {
+import React, { useState } from 'react';
+import './style.css';
 
-  const users = [
-  {
-    id: '2342sdsdsds',
-    name: 'Rodolfo',
-    age: 33,
-    email: 'rod@email.com',
-  }, 
-  {
-    id: '5742sdsdsds',
-    name: 'Leonardo',
-    age: 27,
-    email: 'leo@email.com',
-  },
-]
+function Home() {
+  const [users, setUsers] = useState([
+    {
+      id: '2342sdsdsds',
+      name: 'Rodolfo',
+      age: 33,
+      email: 'rod@email.com',
+    },
+    {
+      id: '5742sdsdsds',
+      name: 'Leonardo',
+      age: 27,
+      email: 'leo@email.com',
+    },
+    {
+      id: '57905sdsdsds',
+      name: 'Manuela',
+      age: 42,
+      email: 'manuzinha@email.com',
+    },
+  ]);
+
+  const handleDelete = (id) => {
+    setUsers(users.filter(user => user.id !== id));
+  };
 
   return (
     <div className='container'>
@@ -29,22 +41,18 @@ function Home() {
       </form>
 
       {users.map(user => (
-
-      <div key={user.id} className='card'>
-        <div>
-          <p>Nome: <span>{user.name}</span></p>
-          <p>Idade: <span>{user.age}</span></p>
-          <p>Email: <span>{user.email}</span></p>
+        <div key={user.id} className='card'>
+          <div>
+            <p>Nome: <span>{user.name}</span></p>
+            <p>Idade: <span>{user.age}</span></p>
+            <p>Email: <span>{user.email}</span></p>
+          </div>
+          <button onClick={() => handleDelete(user.id)}>🗑️</button>
         </div>
-        <button>🗑️</button>
-      </div>
-
       ))}
-
-      
-
     </div>
-  )
+  );
 }
+
 
 export default Home
